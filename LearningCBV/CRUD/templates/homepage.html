@@ -1,0 +1,22 @@
+{% extends 'bsae.html' %}
+
+{% block content %}
+  <div class="album py-5">
+    <div class="container">
+      <div class="row">
+        {% if object_list %}
+          {% for blog in blogs %}
+            <div class="col-lg-4">
+              <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+              <h2>{{blog.title}}</h2>
+              <p>{{blog.content|truncatewords:30}}</p>
+              <p><a class="btn btn-secondary" href="{% url 'detail_view' blog.pk %}" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+          {% endfor %}
+        {% else %}
+            No Post Found
+        {% endif %}
+      </div>
+    </div><!-- /.row -->
+  </div>
+{% endblock %}
